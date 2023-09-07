@@ -21,9 +21,9 @@ python3 -m pip install --upgrade Pillow
 It also requires a folder named 'apods' to exist within the same file as the script.
 
 ## Usage
-The program is fairly simple to run, as the user only needs to run 'main.py' from the command line.
+The program is fairly simple to run, as the user only needs to run 'nasa_apod.py' from the command line.
 ```bash
-python main.py
+python nasa_apod.py
 ```
 
 ## Future Updates
