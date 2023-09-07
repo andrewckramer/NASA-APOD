@@ -18,16 +18,6 @@ import tkinter as tk
 # Main APOD Function
 def main():
     
-    # Function to resize the image to fit in the gui
-    def resize_image(event):
-        new_width = event.width
-        new_height = event.height
-        image = copy_of_image.resize((new_width, new_height))
-        photo = ImageTk.PhotoImage(image)
-        label.config(image = photo)
-        label.image = photo #avoid garbage collection
-        
-    
     load_dotenv()
     
     token = os.environ.get("api_key")
@@ -58,9 +48,10 @@ def main():
         path
         )
     
-    # Displays the temporary image
+    # Opens the image and resizes it for displaying in the GUI
     img = Image.open(path)
-    
+    max_size = (400, 800)
+    img.thumbnail(max_size)
     
     text = f'Explanation: \n\n{explanation_text}\n\nURL: \n{url_text}'
     
@@ -68,12 +59,13 @@ def main():
     parent = tk.Tk()
     parent.geometry("700x875")
     parent.title("NASA APOD")
+
+    image_frame = tk.Frame(parent, height=400, width=800)
+    image_frame.pack(side=tk.TOP)
     
     # Displays the image inside the gui
-    copy_of_image = img.copy()
     photo = ImageTk.PhotoImage(img)
-    label = tk.Label(parent, image = photo, height=400, width=800)
-    label.bind('<Configure>', resize_image)
+    label = tk.Label(image_frame, image = photo, height=400, width=800)
     label.pack(expand = tk.YES)
     
     # Writes the explanation and URL to a text box in the GUI
