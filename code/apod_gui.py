@@ -9,7 +9,7 @@ import tkinter as tk
 from save_image import save_image
 from PIL import ImageTk
 
-def apod_gui(text, img):
+def apod_gui(text, img, image_url):
 
     # Creates the GUI
     parent = tk.Tk()
