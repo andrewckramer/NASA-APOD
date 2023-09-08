@@ -3,12 +3,6 @@
 Created on Fri Aug 18 22:29:30 2023
 
 @author: Andrew Kramer
-
-Inputs: INSERT HERE
-
-Outputs: INSERT HERE
-
-Function: INSERT HERE
 """
 
 import os
