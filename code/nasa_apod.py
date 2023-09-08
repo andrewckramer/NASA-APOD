@@ -13,7 +13,6 @@ from PIL import Image, ImageTk
 import urllib.request
 from apod_gui import apod_gui
 from dotenv import load_dotenv
-from save_image import save_image
 import tkinter as tk
 
 # Main APOD Function
