@@ -18,7 +18,7 @@ python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade Pillow
 ```
 
-It also requires a folder named 'apods' to exist within the same file as the script.
+It also requires a folder named 'apods' to exist within the same directory, but not folder as the script.
 
 ## Usage
 The program is fairly simple to run, as the user only needs to run 'nasa_apod.py' from the command line.
