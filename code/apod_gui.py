@@ -6,6 +6,7 @@ Created on Fri Aug 18 22:29:30 2023
 """
 
 import tkinter as tk
+from save_image import save_image
 from PIL import ImageTk
 
 def apod_gui(text, img):
