@@ -10,7 +10,7 @@ from PIL import ImageTk
 
 def apod_gui(text, img):
 
-	# Creates the GUI
+    # Creates the GUI
     parent = tk.Tk()
     parent.geometry("700x875")
     parent.title("NASA APOD")
