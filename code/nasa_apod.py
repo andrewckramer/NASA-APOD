@@ -20,7 +20,7 @@ def main():
     
     load_dotenv()
     
-    token = os.environ.get("api_key")
+    token = os.environ.get("API_KEY")
     
     URL = "https://api.nasa.gov/planetary/apod?api_key="+token
     
