@@ -55,7 +55,7 @@ def main():
     
     # Passes the image and text to the gui
     text = f'Explanation: \n\n{explanation_text}\n\nURL: \n{url_text}'
-    apod_gui(text, img)
+    apod_gui(text, img, image_url)
 
     img.close()
     
