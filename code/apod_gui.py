@@ -25,7 +25,7 @@ def apod_gui(text, img, image_url):
     label.pack(expand = tk.YES)
     
     # Writes the explanation and URL to a text box in the GUI
-    text_box = tk.Text(parent)
+    text_box = tk.Text(parent, wrap=tk.WORD)
     text_box.pack()
     text_box.insert(tk.END, text)
     text_box.config(state=tk.DISABLED)
