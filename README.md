@@ -26,7 +26,15 @@ The program is fairly simple to run, as the user only needs to run 'nasa_apod.py
 python nasa_apod.py
 ```
 
+## Recent Updates
+
+- Made updates to the GUI where is resizes the image and keeps the aspect ratio for proper displaying.
+
+- Fixed an image display issue, where the image would flip in the GUI but not the file.
+
+
 ## Future Updates
-- As of now the GUI is fairly simple and the image section of the GUI is rather crude, with the image being fixed to a specific size within the GUI. Ideally in the future, I would like to update the GUI such that the image portion will adapt to the dimensions of the image, maintaining the GUI's fixed width and height, but altering the size of the image to fit within this size whilst keeping its dimensions.
 
 - Include the ability to catch an error with fetching the data from the API and display it in the textbox.
+
+- Make the GUI more graphical, and improve appearance.
