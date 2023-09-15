@@ -18,7 +18,12 @@ python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade Pillow
 ```
 
-It also requires a folder named 'apods' to exist within the same directory, but not folder as the script.
+It also requires the [module CustomTkinter](https://github.com/TomSchimansky/CustomTkinter) which can be installed using the following command in the terminal:
+```bash
+pip3 install customtkinter
+```
+
+It also requires a folder named 'apods' and 'assets' with the APOD logo in a file named 'resized_apod_logo.png' to exist within the same directory, but not folder as the script.
 
 ## Usage
 The program is fairly simple to run, as the user only needs to run 'nasa_apod.py' from the command line.
@@ -32,9 +37,9 @@ python nasa_apod.py
 
 - Fixed an image display issue, where the image would flip in the GUI but not the file.
 
+- Made major updates to the GUI appearance, including a more graphical appearance which now features the APOD logo, now built using CustomTkinter instead of Tkinter.
+
 
 ## Future Updates
 
 - Include the ability to catch an error with fetching the data from the API and display it in the textbox.
-
-- Make the GUI more graphical, and improve appearance.
