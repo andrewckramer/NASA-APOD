@@ -39,6 +39,8 @@ python nasa_apod.py
 
 - Made major updates to the GUI appearance, including a more graphical appearance which now features the APOD logo, now built using CustomTkinter instead of Tkinter.
 
+- Now displays the copyright for the image if it is provided by the API.
+
 
 ## Future Updates
 
