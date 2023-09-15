@@ -9,11 +9,10 @@ Function: Obtain the NASA Astronomy Picture of the Day using the NASA APOD API
 """
 import requests
 import os
-from PIL import Image, ImageTk
+from PIL import Image, ExifTags
 import urllib.request
 from apod_gui import apod_gui
 from dotenv import load_dotenv
-import tkinter as tk
 
 # Main APOD Function
 def main():
@@ -40,7 +39,7 @@ def main():
     
     # Gets the current file path and sets it for the temp .png file
     cur_path = os.path.dirname(__file__)
-    path = cur_path+"/apod.png"
+    path = os.path.join(cur_path, "apod.png")
     
     # Writes the image to a temporary file
     urllib.request.urlretrieve(
@@ -50,9 +49,9 @@ def main():
     
     # Opens the image and resizes it for displaying in the GUI
     img = Image.open(path)
-    max_size = (400, 800)
+    max_size = (750, 800)
     img.thumbnail(max_size)
-    
+
     # Re-orients the image if it is flipped by img.thumbnail()
     for orientation in ExifTags.TAGS.keys():
         if ExifTags.TAGS[orientation]=='Orientation':

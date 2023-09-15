@@ -5,38 +5,59 @@ Created on Fri Aug 18 22:29:30 2023
 @author: Andrew Kramer
 """
 
-import tkinter as tk
+import customtkinter as ctk
 from save_image import save_image
-from PIL import ImageTk
+from PIL import Image
+import os
+
 
 def apod_gui(text, img, image_url):
 
     # Creates the GUI
-    parent = tk.Tk()
-    parent.geometry("700x875")
-    parent.title("NASA APOD")
+    parent = ctk.CTk()
 
-    image_frame = tk.Frame(parent, height=400, width=800)
-    image_frame.pack(side=tk.TOP)
-    
-    # Displays the image inside the gui
-    photo = ImageTk.PhotoImage(img)
-    label = tk.Label(image_frame, image = photo, height=400, width=800)
-    label.pack(expand = tk.YES)
-    
-    # Writes the explanation and URL to a text box in the GUI
-    text_box = tk.Text(parent, wrap=tk.WORD)
-    text_box.pack()
-    text_box.insert(tk.END, text)
-    text_box.config(state=tk.DISABLED)
-    
-    # Labels and buttons for saving the image if the user chooses
-    label_text = tk.Label(text='Do you want to save the image?', height=2, font=(12))
-    label_text.pack()
-    
-    yes_button = tk.Button(text='Yes', height=2, command = lambda : save_image(image_url, parent))
-    yes_button.pack(side=tk.LEFT, expand=True, fill=tk.BOTH)
-    no_button = tk.Button(text='No', height=2, command = lambda : parent.destroy())
-    no_button.pack(side=tk.RIGHT, expand=True, fill=tk.BOTH)
-    
+    parent.title('APOD Test')
+    parent.geometry('1250x750')
+
+
+    # Creates the frame for the image and displays the image
+    image_frame = ctk.CTkFrame(parent, height=750, width=800)
+    image_frame.pack(side='left')
+
+    info_frame = ctk.CTkFrame(parent)
+    info_frame.pack(side='right', anchor='n')
+
+    width, height = img.size
+
+    image = ctk.CTkImage(dark_image=img, size=(width, height))
+
+    image_label = ctk.CTkLabel(image_frame, image=image, height=750, width=800, text='')
+    image_label.pack()
+
+
+    # Opens up the APOD logo for displaying in the GUI
+    cur_path = os.path.dirname(__file__)
+    logo_path = os.path.join(cur_path, '..', 'assets', 'resized_apod_logo.png')
+    logo_img = Image.open(logo_path)
+
+    width, height = logo_img.size
+
+    logo_image = ctk.CTkImage(dark_image=logo_img, size=(width, height))
+
+    title_label = ctk.CTkLabel(info_frame, text='', height=100, width=450, image=logo_image)
+    title_label.grid(row=0, columnspan=2) 
+
+
+    # Creates the textbox to display the title, description, and URL
+    textbox = ctk.CTkTextbox(info_frame, width=400, height=500, wrap='word', font=('Segoe UI', 14))
+    textbox.grid(row=1, columnspan=2)
+    textbox.insert('0.0', text)
+    textbox.configure(state='disabled')
+
+
+    # Creates the save button to save the image
+    save_button = ctk.CTkButton(info_frame, text='Save Image', width=300, height=50, command = lambda : save_image(image_url, parent))
+    save_button.grid(row=2, columnspan=2)
+
+
     parent.mainloop()
