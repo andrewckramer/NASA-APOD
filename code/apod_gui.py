@@ -11,7 +11,7 @@ from PIL import Image
 import os
 
 
-def apod_gui(text, img, image_url):
+def apod_gui(text, img, image_url, copyright):
 
     # Creates the GUI
     parent = ctk.CTk()
@@ -31,8 +31,15 @@ def apod_gui(text, img, image_url):
 
     image = ctk.CTkImage(dark_image=img, size=(width, height))
 
-    image_label = ctk.CTkLabel(image_frame, image=image, height=750, width=800, text='')
-    image_label.pack()
+    image_label = ctk.CTkLabel(image_frame, image=image, height=height, width=width, text='')
+    image_label.pack(side='top')
+
+
+    # If there is copyright information, displays it below the image
+    if copyright != None:
+        copyright_text = f"\u00A9 {copyright}"
+        copyright_label = ctk.CTkLabel(image_frame, height=25, width=800, font=('Segoe UI', 10), text=copyright_text)
+        copyright_label.pack(side='bottom', padx=5)
 
 
     # Opens up the APOD logo for displaying in the GUI

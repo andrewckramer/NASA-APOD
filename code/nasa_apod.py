@@ -36,6 +36,11 @@ def main():
     explanation_text = list[0]['explanation']
     url_text = list[0]['hdurl']
     
+    if 'copyright' in list[0].keys():
+        copyright = list[0]['copyright']
+        copyright = copyright.strip()
+    else:
+        copyright = None
     
     # Gets the current file path and sets it for the temp .png file
     cur_path = os.path.dirname(__file__)
@@ -69,7 +74,7 @@ def main():
     
     # Passes the image and text to the gui
     text = f'Explanation: \n\n{explanation_text}\n\nURL: \n{url_text}'
-    apod_gui(text, img, image_url)
+    apod_gui(text, img, image_url, copyright)
 
     img.close()
     
