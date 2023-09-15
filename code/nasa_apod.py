@@ -53,6 +53,21 @@ def main():
     max_size = (400, 800)
     img.thumbnail(max_size)
     
+    # Re-orients the image if it is flipped by img.thumbnail()
+    for orientation in ExifTags.TAGS.keys():
+        if ExifTags.TAGS[orientation]=='Orientation':
+            break
+    
+    exif = img._getexif()
+
+    if exif[orientation] == 3:
+        img=img.rotate(180, expand=True)
+    elif exif[orientation] == 6:
+        img=img.rotate(270, expand=True)
+    elif exif[orientation] == 8:
+        img=img.rotate(90, expand=True)
+
+    
     # Passes the image and text to the gui
     text = f'Explanation: \n\n{explanation_text}\n\nURL: \n{url_text}'
     apod_gui(text, img, image_url)
