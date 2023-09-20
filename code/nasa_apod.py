@@ -7,6 +7,7 @@ Created on Sat Jul 22 23:01:00 2023
 
 Function: Obtain the NASA Astronomy Picture of the Day using the NASA APOD API
 """
+
 import requests
 import os
 from PIL import Image, ExifTags
@@ -54,22 +55,29 @@ def main():
     
     # Opens the image and resizes it for displaying in the GUI
     img = Image.open(path)
-    max_size = (750, 800)
+    max_size = (725, 850)
     img.thumbnail(max_size)
 
-    # Re-orients the image if it is flipped by img.thumbnail()
-    for orientation in ExifTags.TAGS.keys():
-        if ExifTags.TAGS[orientation]=='Orientation':
-            break
-    
-    exif = img._getexif()
 
-    if exif[orientation] == 3:
-        img=img.rotate(180, expand=True)
-    elif exif[orientation] == 6:
-        img=img.rotate(270, expand=True)
-    elif exif[orientation] == 8:
-        img=img.rotate(90, expand=True)
+
+    try:
+        # Re-orients the image if it is flipped by img.thumbnail()
+        for orientation in ExifTags.TAGS.keys():
+            if ExifTags.TAGS[orientation]=='Orientation':
+                break
+        
+        exif = img._getexif()
+
+        if exif[orientation] == 3:
+            img=img.rotate(180, expand=True)
+        elif exif[orientation] == 6:
+            img=img.rotate(270, expand=True)
+        elif exif[orientation] == 8:
+            img=img.rotate(90, expand=True)
+
+    except (AttributeError, KeyError, IndexError, TypeError):
+    # Cases where images don't have getexif
+        pass
 
     
     # Passes the image and text to the gui
