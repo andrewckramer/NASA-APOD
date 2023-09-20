@@ -9,7 +9,7 @@ The file also creates a temporary image file named 'apod.png' within the same fo
 ## Dependencies
 This program requires the module [Requests](https://pypi.org/project/requests/) which can be installed using the following command in the terminal:
 ```bash
-$ python -m pip install requests
+python -m pip install requests
 ```
 
 It also requires the module [Pillow](https://pypi.org/project/Pillow/) which can be installed using the following command in the terminal:
