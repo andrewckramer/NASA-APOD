@@ -18,7 +18,7 @@ python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade Pillow
 ```
 
-It also requires the [module CustomTkinter](https://github.com/TomSchimansky/CustomTkinter) which can be installed using the following command in the terminal:
+It also requires the module [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter) which can be installed using the following command in the terminal:
 ```bash
 pip3 install customtkinter
 ```
