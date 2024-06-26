@@ -2,7 +2,7 @@
 GUI for interfacing with the [NASA APOD API](https://api.nasa.gov/), displaying the description and link, and prompting the user if they would like to save the image.
 
 ## Overview
-This is a simple program, designed to get the current [NASA Astronomy Picture of the Day](https://apod.nasa.gov/apod/astropix.html) from the API and display it in a GUI. The GUI is comprised of a textbox for displaying the description and link for the image, and a singular button, "Save Image', which allow the user to save the image to a folder 'apods' under the filename 'apod-YYYY-MM-DD.png' if they click it.
+This is a simple program, designed to get the current [NASA Astronomy Picture of the Day](https://apod.nasa.gov/apod/astropix.html) from the API and display it in a GUI. The GUI is comprised of a textbox for displaying the description and link for the image, and a singular button, 'Save Image', which allow the user to save the image to a folder 'apods' under the filename 'apod-YYYY-MM-DD.png' if they click it.
 
 The file also creates a temporary image file named 'apod.png' within the same folder as the main script, this is utilized to display the image within the GUI.
 
