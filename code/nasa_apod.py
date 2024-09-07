@@ -8,12 +8,13 @@ Created on Sat Jul 22 23:01:00 2023
 Function: Obtain the NASA Astronomy Picture of the Day using the NASA APOD API
 """
 
-import requests
 import os
-from PIL import Image, ExifTags
+import requests
 import urllib.request
-from apod_gui import apod_gui
-from dotenv import load_dotenv
+
+from PIL        import Image, ExifTags
+from apod_gui   import apod_gui
+from dotenv     import load_dotenv
 
 # Main APOD Function
 def main():
@@ -32,8 +33,10 @@ def main():
     # Gets the data from the API and formats it with JSON
     response_json = response.json()
     list = [response_json]
+
+
+    date = str(list[0]['date'])
     image_url = str(list[0]['hdurl'])
-    
     explanation_text = list[0]['explanation']
     url_text = list[0]['hdurl']
     
@@ -78,10 +81,9 @@ def main():
     except (AttributeError, KeyError, IndexError, TypeError):
     # Cases where images don't have getexif
         pass
-
     
     # Passes the image and text to the gui
-    text = f'Explanation: \n\n{explanation_text}\n\nURL: \n{url_text}'
+    text = f'Date: {date}\n\nExplanation: \n\n{explanation_text}\n\nURL: \n{url_text}'
     apod_gui(text, img, image_url, copyright)
 
     img.close()

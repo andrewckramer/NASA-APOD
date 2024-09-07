@@ -6,9 +6,10 @@ Created on Fri Aug 18 22:29:30 2023
 """
 
 import customtkinter as ctk
-from save_image import save_image
-from PIL import Image
 import os
+
+from save_image import save_image
+from PIL        import Image
 
 
 def apod_gui(text, img, image_url, copyright):
