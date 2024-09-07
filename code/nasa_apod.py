@@ -8,7 +8,6 @@ Created on Sat Jul 22 23:01:00 2023
 Function: Obtain the NASA Astronomy Picture of the Day using the NASA APOD API
 """
 
-import datetime
 import os
 import requests
 import urllib.request
@@ -34,8 +33,10 @@ def main():
     # Gets the data from the API and formats it with JSON
     response_json = response.json()
     list = [response_json]
+
+
+    date = str(list[0]['date'])
     image_url = str(list[0]['hdurl'])
-    
     explanation_text = list[0]['explanation']
     url_text = list[0]['hdurl']
     
@@ -80,12 +81,9 @@ def main():
     except (AttributeError, KeyError, IndexError, TypeError):
     # Cases where images don't have getexif
         pass
-
-    # Gets the current date in the YYYY-MM-DD format
-    time = datetime.datetime.utcnow().date()
     
     # Passes the image and text to the gui
-    text = f'Date: {time}\n\nExplanation: \n\n{explanation_text}\n\nURL: \n{url_text}'
+    text = f'Date: {date}\n\nExplanation: \n\n{explanation_text}\n\nURL: \n{url_text}'
     apod_gui(text, img, image_url, copyright)
 
     img.close()
