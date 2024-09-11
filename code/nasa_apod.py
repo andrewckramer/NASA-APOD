@@ -35,6 +35,7 @@ def main():
     list = [response_json]
 
 
+    title = list[0]['title']
     date = str(list[0]['date'])
     image_url = str(list[0]['hdurl'])
     explanation_text = list[0]['explanation']
@@ -83,7 +84,7 @@ def main():
         pass
     
     # Passes the image and text to the gui
-    text = f'Date: {date}\n\nExplanation: \n\n{explanation_text}\n\nURL: \n{url_text}'
+    text = f'Title: {title}\n\nDate: {date}\n\nExplanation: \n\n{explanation_text}\n\nURL: \n{url_text}'
     apod_gui(text, img, image_url, copyright)
 
     img.close()
