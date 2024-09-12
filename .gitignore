@@ -1,2 +1,6 @@
 # Ignore the environment variables
 .env
+
+# Ignore irrelevant folders
+code/__pycache__/*
+code/apods/*
