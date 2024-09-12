@@ -5,8 +5,8 @@ Created on Fri Aug 18 22:29:30 2023
 @author: Andrew Kramer
 """
 
-import os
 import datetime
+import os
 import urllib.request
 
 # Saves the image to a jpg file whose name consists of the date of the apod, i.e. 'apod-2023-08-10.png'
