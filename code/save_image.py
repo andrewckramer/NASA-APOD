@@ -16,8 +16,8 @@ def save_image(image_url, parent):
     time = datetime.datetime.utcnow().date()
     
     # Gets the current path and writes to the folder 'apods' with a file apod-YYYY-MM-DD.png
-    cur_path = os.path.dirname(__file__)
-    path = os.path.join(cur_path, 'apods', f'apod-{time}.png')
+    cur_path = os.getcwd()
+    path = os.path.join(cur_path, '..', 'apods', f'apod-{time}.png')
     
     # Writes the image to the file and closes the tk window
     urllib.request.urlretrieve(
