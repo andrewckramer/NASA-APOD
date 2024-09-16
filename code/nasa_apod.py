@@ -19,30 +19,34 @@ from dotenv     import load_dotenv
 # Main APOD Function
 def main():
     
+    # Loads the API key from .env
     load_dotenv()
-    
     token = os.environ.get("API_KEY")
     
+
+    # Defines the URL with the API key and scrapes the API webpage
     URL = "https://api.nasa.gov/planetary/apod?api_key="+token
-    
     response = requests.get(URL)
     
+
     # Un-comment the below statement for troubleshooting to see the response of the API
-    #print(response)
+    # print(response)
     
-    # Gets the data from the API and formats it with JSON
-    response_json = response.json()
-    list = [response_json]
+
+    # Gets the data from the API and formats it into a python dict with JSON
+    data = response.json()
 
 
-    title = list[0]['title']
-    date = str(list[0]['date'])
-    image_url = str(list[0]['hdurl'])
-    explanation_text = list[0]['explanation']
-    url_text = list[0]['hdurl']
+    # Defines all the values to be sent to the text box in the GUI
+    title = data['title']
+    date = str(data['date'])
+    image_url = data['hdurl']
+    explanation_text = data['explanation']
     
-    if 'copyright' in list[0].keys():
-        copyright = list[0]['copyright']
+
+    # Checks if the copyright is included in the API data and defines it if present
+    if 'copyright' in data.keys():
+        copyright = data['copyright']
         copyright = copyright.strip()
     else:
         copyright = None
@@ -51,6 +55,7 @@ def main():
     # Gets the current file path and sets it for the temp .png file
     cur_path = os.path.dirname(__file__)
     path = os.path.join(cur_path, "apod.png")
+
     
     # Writes the image to a temporary file
     urllib.request.urlretrieve(
@@ -83,7 +88,7 @@ def main():
         pass
     
     # Passes the image and text to the gui
-    text = f'Title: {title}\n\nDate: {date}\n\nExplanation: \n\n{explanation_text}\n\nURL: \n{url_text}'
+    text = f'Title: {title}\n\nDate: {date}\n\nExplanation: \n\n{explanation_text}\n\nURL: \n{image_url}'
     apod_gui(text, img, image_url, copyright)
 
     img.close()

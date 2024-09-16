@@ -17,22 +17,24 @@ def apod_gui(text : str, img : Image, image_url : str, copyright : str):
     # Creates the GUI
     parent = ctk.CTk()
 
-    parent.title('APOD Test')
+    parent.title('NASA APOD')
     parent.geometry('1250x750')
 
-    width_base = 1250
 
+    # Dimensions for items within the GUI
+    base_width = 1250
     width, height = img.size
 
     
-    # Creates the frame for the image and displays the image
+    # Creates the frames for the two sections of the GUI
     image_frame = ctk.CTkFrame(parent, height=750, width=width)
     image_frame.pack(side='left')
 
-    info_frame = ctk.CTkFrame(parent, height=750, width=width_base-width)
+    info_frame = ctk.CTkFrame(parent, height=750, width=base_width-width)
     info_frame.pack(side='right', anchor='n')
 
 
+    # Displays the image in the image frame
     image = ctk.CTkImage(dark_image=img, size=(width, height))
 
     image_label = ctk.CTkLabel(image_frame, image=image, height=height, width=width, text='')
@@ -60,14 +62,14 @@ def apod_gui(text : str, img : Image, image_url : str, copyright : str):
 
 
     # Creates the textbox to display the title, description, and URL
-    textbox = ctk.CTkTextbox(info_frame, width=width_base-width, height=500, wrap='word', font=('Segoe UI', 14))
+    textbox = ctk.CTkTextbox(info_frame, width=base_width-width, height=500, wrap='word', font=('Segoe UI', 14))
     textbox.grid(row=1, columnspan=2)
     textbox.insert('0.0', text)
     textbox.configure(state='disabled')
 
 
     # Creates the save button to save the image
-    save_button = ctk.CTkButton(info_frame, text='Save Image', width=width_base-width, height=50, command = lambda : save_image(image_url, parent))
+    save_button = ctk.CTkButton(info_frame, text='Save Image', width=base_width-width, height=50, command = lambda : save_image(image_url, parent))
     save_button.grid(row=2, columnspan=2)
 
 
