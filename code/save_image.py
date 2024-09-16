@@ -10,7 +10,7 @@ import os
 import urllib.request
 
 # Saves the image to a jpg file whose name consists of the date of the apod, i.e. 'apod-2023-08-10.png'
-def save_image(image_url, parent):
+def save_image(image_url : str, parent):
     
     # Gets the current date in the YYYY-MM-DD format
     time = datetime.datetime.utcnow().date()
