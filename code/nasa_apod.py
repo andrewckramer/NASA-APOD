@@ -47,6 +47,7 @@ def main():
     else:
         copyright = None
     
+
     # Gets the current file path and sets it for the temp .png file
     cur_path = os.path.dirname(__file__)
     path = os.path.join(cur_path, "apod.png")
@@ -61,8 +62,6 @@ def main():
     img = Image.open(path)
     max_size = (725, 850)
     img.thumbnail(max_size)
-
-
 
     try:
         # Re-orients the image if it is flipped by img.thumbnail()

@@ -12,7 +12,7 @@ from save_image import save_image
 from PIL        import Image
 
 
-def apod_gui(text, img, image_url, copyright):
+def apod_gui(text : str, img : Image, image_url : str, copyright : str):
 
     # Creates the GUI
     parent = ctk.CTk()
